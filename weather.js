@@ -7,12 +7,11 @@ class Weather {
 
   // Fetch weather from API
   async getWeather() {
-    const response = await fetch
-    (`http://api.openweathermap.org/data/2.5/weather?q=${this.city}`);
+    const response = await fetch(`https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139`);
 
     const responseData = await response.json();
 
-    return responseData.coord;
+    return responseData.main;
   }
 
   // Change weather location
