@@ -1,22 +1,30 @@
 class Weather {
-  constructor(city, state) {
+  constructor(lat, state) {
     this.apiKey = 'c32b17d19cf44c975e03ef78c02ce775';
-    this.city = city;
-    this.state = state;
+    this.lat = 2;
+    this.lon = 2;
   }
 
   // Fetch weather from API
   async getWeather() {
-    const response = await fetch(`https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139`);
+    const response = await fetch(`https://fcc-weather-api.glitch.me/api/current?lat=${this.lat}&lon=${this.lon}`);
 
     const responseData = await response.json();
 
-    return responseData.main;
+
+    var obj = {
+      conditions: responseData.main,
+      wind: responseData.wind,
+      name: responseData.name,
+    }
+
+    // return responseData.main;
+    return obj;
   }
 
   // Change weather location
-  changeLocation(city, state) {
-    this.city = city;
-    this.state = state;
+  changeLocation(lat, lon) {
+    this.lat = lat;
+    this.lon = lon;
   }
 }
