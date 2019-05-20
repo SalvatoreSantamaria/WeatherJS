@@ -1,8 +1,8 @@
 class Weather {
   constructor(lat, state) {
     this.apiKey = 'c32b17d19cf44c975e03ef78c02ce775';
-    this.lat = 2;
-    this.lon = 2;
+    this.lat = 47.307323;
+    this.lon = -122.228455;
   }
 
   // Fetch weather from API
@@ -14,11 +14,14 @@ class Weather {
 
     var obj = {
       conditions: responseData.main,
-      wind: responseData.wind,
-      name: responseData.name,
+      wind: responseData.wind.speed,
+      name: responseData.id,
+      currentWeather: responseData.weather[0].main ,
+      description: responseData.weather[0].description
     }
 
     // return responseData.main;
+    console.log(obj)
     return obj;
   }
 
